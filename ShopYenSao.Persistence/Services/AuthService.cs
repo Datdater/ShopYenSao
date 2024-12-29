@@ -9,7 +9,6 @@ using ShopYenSao.Application.Identity;
 using ShopYenSao.Application.Models.Identity;
 using ShopYenSao.Identity.Models;
 
-namespace ShopYenSao.Identity.Services;
 
 public class AuthService : IAuthService
 {
@@ -84,8 +83,6 @@ public class AuthService : IAuthService
         var user = new ApplicationUser
         {
             Email = request.Email,
-            FirstName = request.FirstName,
-            LastName = request.LastName,
             UserName = request.UserName,
             EmailConfirmed = true
         };

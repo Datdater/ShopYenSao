@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ShopYenSao.Application\ShopYenSao.Application.csproj" />
-    <ProjectReference Include="..\ShopYenSao.Identity\ShopYenSao.Identity.csproj" />
     <ProjectReference Include="..\ShopYenSao.Persistence\ShopYenSao.Persistence.csproj" />
   </ItemGroup>
 

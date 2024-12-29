@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using ShopYenSao.Domain;
 
 namespace ShopYenSao.Identity.Models;
 
 public class ApplicationUser : IdentityUser
 {
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
+    public Guid AccountId { get; set; }
+    public virtual Account Account { get; set; }
 }
