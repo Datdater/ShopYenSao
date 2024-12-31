@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using ShopYenSao.Application.Contracts.Persistence;
 using ShopYenSao.Application.Identity;
+using ShopYenSao.Application.Models.Identity;
 using ShopYenSao.Identity.Models;
 using ShopYenSao.Persistence.DatabaseContext;
 using ShopYenSao.Persistence.Repositories;
@@ -23,12 +24,12 @@ public static class DependencyInjection
         });
         services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
         
+        services.Configure<JWTSettings>(configuration.GetSection("JwtSettings"));
         services.AddIdentity<ApplicationUser, IdentityRole>()
             .AddEntityFrameworkStores<YenSaoDatabaseContext>().AddDefaultTokenProviders();
 
         services.AddTransient<IAuthService, AuthService>();
         // services.AddTransient<IUserService, UserService>();
-
 
         services.AddAuthentication(options =>
         {

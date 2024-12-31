@@ -59,7 +59,7 @@ public class ExceptionMiddleware
                         Title = ex.Message,
                         Status = (int)statusCode,
                         Detail = ex.StackTrace,
-                        Type = nameof(BadRequestException)
+                        Type = "Internal Server Error"
                     };
                     break;
             }

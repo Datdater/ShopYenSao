@@ -11,12 +11,14 @@ public class UnitOfWork : IUnitOfWork
     private bool _disposed = false;
     public ICategoryRepository CategoryRepository { get; }
     public ISubCategoryRepository SubCategoryRepository { get; }
+    public IAccountRepository AccountRepository { get; }
 
     public UnitOfWork(YenSaoDatabaseContext context)
     {
         _context = context;
         CategoryRepository = new CategoryRepository(_context);
         SubCategoryRepository = new SubCategoryRepository(_context);
+        AccountRepository = new AccountRepository(_context);
     }
 
     public void Dispose()
