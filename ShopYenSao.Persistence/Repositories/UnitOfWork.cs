@@ -12,6 +12,7 @@ public class UnitOfWork : IUnitOfWork
     public ICategoryRepository CategoryRepository { get; }
     public ISubCategoryRepository SubCategoryRepository { get; }
     public IAccountRepository AccountRepository { get; }
+    public IProductRepository ProductRepository { get; }
 
     public UnitOfWork(YenSaoDatabaseContext context)
     {
@@ -19,6 +20,7 @@ public class UnitOfWork : IUnitOfWork
         CategoryRepository = new CategoryRepository(_context);
         SubCategoryRepository = new SubCategoryRepository(_context);
         AccountRepository = new AccountRepository(_context);
+        ProductRepository = new ProductRepository(_context);
     }
 
     public void Dispose()

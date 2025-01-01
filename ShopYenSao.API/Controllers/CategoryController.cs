@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using ShopYenSao.Application.Commons;
 using ShopYenSao.Application.Features.Category.Commands.CreateCategory;
 using ShopYenSao.Application.Features.Category.Commands.DeleteCategory;
 using ShopYenSao.Application.Features.Category.Commands.GetAllCategory;
@@ -20,9 +21,9 @@ public class CategoryController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<List<CategoryDto>> GetCategories()
+    public async Task<Pagination<CategoryDto>> GetCategories([FromQuery] GetCategoryQuery query)
     {
-        return await _mediator.Send(new GetCategoryQuery());
+        return await _mediator.Send(query);
     }
 
     [HttpGet("{id}", Name = "GetCategoryById")]
@@ -40,8 +41,7 @@ public class CategoryController : ControllerBase
         var response = await _mediator.Send(createCategory);
         return CreatedAtRoute(
             "GetCategoryById",
-            new { id = response },
-            createCategory
+            new { id = response }
         );
     }
 

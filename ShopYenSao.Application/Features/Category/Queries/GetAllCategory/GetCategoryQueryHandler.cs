@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
 using MediatR;
+using ShopYenSao.Application.Commons;
 using ShopYenSao.Application.Contracts.Persistence;
 using ShopYenSao.Application.Features.Category.Queries.GetAllCategory;
 
 namespace ShopYenSao.Application.Features.Category.Commands.GetAllCategory;
 
-public class GetCategoryQueryHandler : IRequestHandler<GetCategoryQuery, List<CategoryDto>>
+public class GetCategoryQueryHandler : IRequestHandler<GetCategoryQuery, Pagination<CategoryDto>>
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
@@ -14,10 +15,11 @@ public class GetCategoryQueryHandler : IRequestHandler<GetCategoryQuery, List<Ca
         _unitOfWork = unitOfWork;
         _mapper = mapper;
     }
-    public async Task<List<CategoryDto>> Handle(GetCategoryQuery request, CancellationToken cancellationToken)
+    public async Task<Pagination<CategoryDto>> Handle(GetCategoryQuery request, CancellationToken cancellationToken)
     {
-        var categoryDetails = await _unitOfWork.CategoryRepository.GetAllAsync();
-        var data = _mapper.Map<List<CategoryDto>>(categoryDetails);
+        var categoryDetails = await _unitOfWork.CategoryRepository.GetPaginationAsync(null, request.PageIndex, request.PageSize);
+        var data = _mapper.Map<Pagination<CategoryDto>>(categoryDetails);
+        
         return data;
     }
     

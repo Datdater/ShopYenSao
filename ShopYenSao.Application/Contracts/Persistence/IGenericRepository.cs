@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using ShopYenSao.Application.Commons;
 using ShopYenSao.Domain;
 
 namespace ShopYenSao.Application.Contracts.Persistence;
@@ -12,4 +13,6 @@ public interface IGenericRepository<T> where T : BaseEntity
     Task UpdateAsync(T entity);
     Task DeleteAsync(T entity);
     Task<T> GetFirstOrDefaultAsync(Expression<Func<T, bool>> predicate, string? includeProperties = null);
+    
+    Task<Pagination<T>> GetPaginationAsync( string? includeProperties = null, int pageIndex = 0, int pageSize = 10);
 }

@@ -1,5 +1,6 @@
 ﻿using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
+using ShopYenSao.Application.Commons;
 using ShopYenSao.Application.Contracts.Persistence;
 using ShopYenSao.Domain;
 using ShopYenSao.Persistence.DatabaseContext;
@@ -79,4 +80,31 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
         }
         return await query.FirstOrDefaultAsync();
     }
+    public async Task<Pagination<T>> GetPaginationAsync(string? includeProperties = null, int pageIndex = 0, int pageSize = 10)
+    {
+        IQueryable<T> query = dbSet;
+        if (includeProperties != null)
+        {
+            foreach (var item in includeProperties.Split(new char[]{','}, StringSplitOptions.RemoveEmptyEntries))
+            {
+                query = query.Include(item);
+            }
+        }
+        var itemCount = await query.CountAsync();
+        var items = await query
+            .Skip(pageIndex * pageSize)
+            .Take(pageSize)
+            .AsNoTracking()
+            .ToListAsync();
+        var result = new Pagination<T>()
+        {
+            PageIndex = pageIndex,
+            PageSize = pageSize,
+            TotalItemsCount = itemCount,
+            Items = items,
+        };
+
+        return result;
+    }
+    
 }
