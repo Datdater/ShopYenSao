@@ -10,7 +10,7 @@ public class Order : BaseEntity
     [Precision(18, 2)]
     public decimal OrderTotal { get; set; }
     public OrderStatus OrderStatus { get; set; }
-    public Guid ProductId { get; set; }
+    public List<OrderDetail> OrderDetails { get; set; } 
     public Promotion Promotion { get; set; }
     
 }

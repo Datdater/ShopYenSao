@@ -6,6 +6,8 @@ public interface IUnitOfWork : IDisposable
     public ISubCategoryRepository SubCategoryRepository { get; }
     public IAccountRepository AccountRepository { get; }
     public IProductRepository ProductRepository { get; }
+    public IOrderRepository OrderRepository { get; }
+    public IOrderDetailRepostitory OrderDetailRepository { get; }
     
     Task<int> SaveAsync();
 

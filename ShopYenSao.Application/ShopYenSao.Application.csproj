@@ -13,10 +13,12 @@
     <ItemGroup>
       <PackageReference Include="AutoMapper" Version="13.0.1" />
       <PackageReference Include="FluentValidation" Version="11.11.0" />
-      <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+      <PackageReference Include="MediatR" Version="12.4.1" />
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Features\OrderDetail\CreateOrderDetail\" />
+      <Folder Include="Features\OrderDetail\Queries\GetById\" />
       <Folder Include="Features\Product\Commands\DeleteProduct\" />
     </ItemGroup>
 

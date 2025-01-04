@@ -19,7 +19,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     }
     public Task<T> GetByIdAsync(object id)
     {
-        throw new NotImplementedException();
+        return dbSet.FirstOrDefaultAsync(x => x.Id == (Guid)id);
     }
     //Use for navigation included
     public async Task<List<T>> GetAllAsync(string? includeProperties)
@@ -106,5 +106,9 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 
         return result;
     }
-    
+
+    public async Task AddRangeAsync(IEnumerable<T> entities)
+    {
+        await dbSet.AddRangeAsync(entities);
+    }    
 }
