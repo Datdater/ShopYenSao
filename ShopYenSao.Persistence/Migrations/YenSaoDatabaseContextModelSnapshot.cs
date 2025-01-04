@@ -222,10 +222,7 @@ namespace ShopYenSao.Persistence.Migrations
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("PromotionId")
+                    b.Property<Guid?>("PromotionId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("Updated")
@@ -508,9 +505,7 @@ namespace ShopYenSao.Persistence.Migrations
                 {
                     b.HasOne("ShopYenSao.Domain.Promotion", "Promotion")
                         .WithMany()
-                        .HasForeignKey("PromotionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PromotionId");
 
                     b.HasOne("ShopYenSao.Domain.Account", "User")
                         .WithMany()
@@ -526,7 +521,7 @@ namespace ShopYenSao.Persistence.Migrations
             modelBuilder.Entity("ShopYenSao.Domain.OrderDetail", b =>
                 {
                     b.HasOne("ShopYenSao.Domain.Order", "Order")
-                        .WithMany()
+                        .WithMany("OrderDetails")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -578,6 +573,11 @@ namespace ShopYenSao.Persistence.Migrations
             modelBuilder.Entity("ShopYenSao.Domain.Category", b =>
                 {
                     b.Navigation("SubCategories");
+                });
+
+            modelBuilder.Entity("ShopYenSao.Domain.Order", b =>
+                {
+                    b.Navigation("OrderDetails");
                 });
 #pragma warning restore 612, 618
         }

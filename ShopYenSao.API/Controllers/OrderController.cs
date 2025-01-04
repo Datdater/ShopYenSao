@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ShopYenSao.Application.Features.Order.Commands.CreateOrder;
+using ShopYenSao.Application.Features.Order.Queries.GetById;
 using ShopYenSao.Application.Features.Product.Queries.GetAll;
 
 namespace ShopYenSao.API.Controllers;
@@ -28,8 +29,17 @@ public class OrderController : ControllerBase
     }
     
     [HttpGet("id", Name = "GetOrderById")]
-    public async Task<ActionResult> Get(GetProductQuery command)
+    public async Task<ActionResult> Get([FromQuery]GetOrderSpecificQuery command)
     {
+        try
+        {
+            var response = await _mediator.Send(command);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
         return Ok(await _mediator.Send(command));
     }
 }

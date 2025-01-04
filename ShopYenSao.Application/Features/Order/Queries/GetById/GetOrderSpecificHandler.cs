@@ -16,7 +16,7 @@ public class GetOrderSpecificHandler : IRequestHandler<GetOrderSpecificQuery, Or
     }
     public async Task<OrderSpecific> Handle(GetOrderSpecificQuery request, CancellationToken cancellationToken)
     {
-        var order = await _unitOfWork.OrderRepository.GetFirstOrDefaultAsync(u => u.Id == request.Id);
+        var order = await _unitOfWork.OrderRepository.GetFirstOrDefaultAsync(u => u.Id == request.Id, "OrderDetails");
         return _mapper.Map<OrderSpecific>(order);
     }
 }

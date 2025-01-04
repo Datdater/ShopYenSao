@@ -11,6 +11,6 @@ public class OrderDetailProfile : Profile
     {
         CreateMap<OrderDetail, OrderDetailDto>().ReverseMap();
         CreateMap<OrderDetail, CreateOrderDetail>().ReverseMap();
-        CreateMap(typeof(List<>), typeof(List<>));
+        
     }
 }

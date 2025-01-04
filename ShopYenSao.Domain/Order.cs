@@ -11,6 +11,7 @@ public class Order : BaseEntity
     public decimal OrderTotal { get; set; }
     public OrderStatus OrderStatus { get; set; }
     public List<OrderDetail> OrderDetails { get; set; } 
-    public Promotion Promotion { get; set; }
+    public Guid? PromotionId { get; set; }
+    public Promotion? Promotion { get; set; }
     
 }
