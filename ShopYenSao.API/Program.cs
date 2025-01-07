@@ -3,6 +3,7 @@ using Microsoft.Extensions.Options;
 using ShopYenSao.API.Middleware;
 using ShopYenSao.Application;
 using ShopYenSao.Identity;
+using ShopYenSao.PayOS;
 using ShopYenSao.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddPersistence(builder.Configuration);
 builder.Services.ApplicationService();
 builder.Services.AddControllers().AddJsonOptions(x=>x.JsonSerializerOptions.ReferenceHandler= ReferenceHandler.IgnoreCycles);
-
+builder.Services.AddPayOS(builder.Configuration);
 builder.Services.AddCors(option =>
 {
     option.AddPolicy("all", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());

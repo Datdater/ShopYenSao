@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ShopYenSao.Application.Commons;
 using ShopYenSao.Application.Features.Order.Queries.GetAll;
 using ShopYenSao.Application.Features.Order.Queries.GetById;
 using ShopYenSao.Domain;
@@ -11,5 +12,7 @@ public class OrderProfile : Profile
     {
         CreateMap<Order, OrderDto>().ReverseMap();
         CreateMap<Order, OrderSpecific>().ReverseMap();
+        CreateMap(typeof(Pagination<>), typeof(Pagination<>));
+
     }
 }

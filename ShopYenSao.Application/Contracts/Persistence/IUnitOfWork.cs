@@ -8,7 +8,7 @@ public interface IUnitOfWork : IDisposable
     public IProductRepository ProductRepository { get; }
     public IOrderRepository OrderRepository { get; }
     public IOrderDetailRepostitory OrderDetailRepository { get; }
-    
+    public IPaymentRepository PaymentRepository { get; }
     Task<int> SaveAsync();
 
 }

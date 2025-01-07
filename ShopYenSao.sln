@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopYenSao.Persistence", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopYenSao.API", "ShopYenSao.API\ShopYenSao.API.csproj", "{27292621-166A-48D7-BDB6-F4CEB1856BE7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopYenSao.PayOS", "ShopYenSao.PayOS\ShopYenSao.PayOS.csproj", "{AE30DC8A-A80B-4CF9-A9FF-7A53E12EBA6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,11 +37,16 @@ Global
 		{27292621-166A-48D7-BDB6-F4CEB1856BE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27292621-166A-48D7-BDB6-F4CEB1856BE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27292621-166A-48D7-BDB6-F4CEB1856BE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE30DC8A-A80B-4CF9-A9FF-7A53E12EBA6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE30DC8A-A80B-4CF9-A9FF-7A53E12EBA6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE30DC8A-A80B-4CF9-A9FF-7A53E12EBA6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE30DC8A-A80B-4CF9-A9FF-7A53E12EBA6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A167C562-6541-4409-94BC-920A8F3149D1} = {CC74C55D-BB01-4EA9-86E3-B113C518C654}
+		{AE30DC8A-A80B-4CF9-A9FF-7A53E12EBA6C} = {CC74C55D-BB01-4EA9-86E3-B113C518C654}
 	EndGlobalSection
 EndGlobal

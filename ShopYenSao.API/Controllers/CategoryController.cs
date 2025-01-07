@@ -50,8 +50,9 @@ public class CategoryController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(400)]
     [ProducesDefaultResponseType]
-    public async Task<ActionResult> Put(UpdateCategoryCommand updateCategory)
+    public async Task<ActionResult> Put([FromQuery]string id, UpdateCategoryCommand updateCategory)
     {
+        if(id != updateCategory.Id.ToString()) return BadRequest();
         await _mediator.Send(updateCategory);
         return NoContent();
     }

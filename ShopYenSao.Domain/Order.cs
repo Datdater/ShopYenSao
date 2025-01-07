@@ -13,5 +13,5 @@ public class Order : BaseEntity
     public List<OrderDetail> OrderDetails { get; set; } 
     public Guid? PromotionId { get; set; }
     public Promotion? Promotion { get; set; }
-    
+    public required string Address { get; set; }
 }

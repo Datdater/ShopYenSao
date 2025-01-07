@@ -15,6 +15,7 @@ public class UnitOfWork : IUnitOfWork
     public IProductRepository ProductRepository { get; }
     public IOrderRepository OrderRepository { get; }
     public IOrderDetailRepostitory OrderDetailRepository { get; }
+    public IPaymentRepository PaymentRepository { get; }
 
     public UnitOfWork(YenSaoDatabaseContext context)
     {
@@ -25,6 +26,7 @@ public class UnitOfWork : IUnitOfWork
         ProductRepository = new ProductRepository(_context);
         OrderRepository = new OrderRepository(_context);
         OrderDetailRepository = new OrderDetailRepository(_context);
+        PaymentRepository = new PaymentRepository(_context);
     }
 
     public void Dispose()

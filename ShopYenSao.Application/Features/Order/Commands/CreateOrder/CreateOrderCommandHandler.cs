@@ -54,7 +54,8 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, Gui
         {
             UserId = request.UserId,
             OrderTotal = totalAmount,
-            OrderDetails = orderDetailListForInsert
+            OrderDetails = orderDetailListForInsert,
+            Address = request.Address
         };
         await _unitOfWork.OrderRepository.InsertAsync(order);
         await _unitOfWork.SaveAsync();
