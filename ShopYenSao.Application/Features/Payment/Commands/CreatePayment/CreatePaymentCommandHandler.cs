@@ -26,6 +26,7 @@ public class CreatePaymentCommandHandler : IRequestHandler<CreatePaymentCommand,
         }
         var payment = _mapper.Map<Domain.Payment>(request);
         payment.IsPaid = false;
+        payment.Amount = order.OrderTotal;
         await _unitOfWork.PaymentRepository.InsertAsync(payment);
         await _unitOfWork.SaveAsync();
         return payment.Id;

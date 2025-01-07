@@ -20,7 +20,6 @@
       <Folder Include="Features\OrderDetail\CreateOrderDetail\" />
       <Folder Include="Features\OrderDetail\Queries\GetById\" />
       <Folder Include="Features\Payment\Queries\GetAll\" />
-      <Folder Include="Features\Payment\Queries\GetById\" />
       <Folder Include="Features\Product\Commands\DeleteProduct\" />
     </ItemGroup>
 
