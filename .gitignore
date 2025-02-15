@@ -30,9 +30,6 @@ packages/
 *.temp
 *.cache
 
-# Configuration Files
-appsettings*.json
-appsettings*.Development.json
 
 # Dependency Files
 *.dll
